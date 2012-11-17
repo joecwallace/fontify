@@ -1,87 +1,68 @@
 <!doctype html>
-<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
-<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Fontify by joecwallace</title>
 
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
-  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/script.js"></script>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Fontify</h1>
+        <p>Preview Google Web Fonts on your site</p>
 
-  <title>Fontify</title>
-  <meta name="description" content="Preview Google Web Fonts on your site">
+        <p class="view"><a href="https://github.com/joecwallace/fontify">View the Project on GitHub <small>joecwallace/fontify</small></a></p>
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-</head>
+        <ul>
+          <li><a href="https://github.com/joecwallace/fontify/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/joecwallace/fontify/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/joecwallace/fontify">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>Fontify overview</h3>
 
-<body>
+<p>Fontify allows to see Google Web Fonts in action - either on this page or your own! Simply hover over the toolbar at the top of the window to change fonts. When you're happy with the results, click the "Use fonts" link to haz teh codez.</p>
 
-  <div class="wrapper">
-    <header>
-      <h1 class="title">Fontify</h1>
-    </header>
-    <div id="container">
-      <p class="tagline">Preview Google Web Fonts on your site</p>
-      <div id="main" role="main">
-        <div class="download-bar">
-        <div class="inner">
-          <a href="https://github.com/joecwallace/fontify/tarball/master" class="download-button tar"><span>Download</span></a>
-          <a href="https://github.com/joecwallace/fontify/zipball/master" class="download-button zip"><span>Download</span></a>
-          <a href="https://github.com/joecwallace/fontify" class="code">View Fontify on GitHub</a>
-        </div>
-        <span class="blc"></span><span class="trc"></span>
-        </div>
-        <article class="markdown-body">
-          <h3>Welcome to GitHub Pages.</h3>
+<h3>Fontify on your site</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>As a jQuery plugin, Fontify requires ... jQuery. So, be sure to do something like this:</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<pre><code>&lt;script type="text/javascript" src="jquery.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" strc="jquery.fontify.js"&gt;&lt;/script&gt;
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Then you'll be able to use Fontify to preview fonts on your own site with some code like this:</p>
 
-<h3>Designer Templates</h3>
+<pre><code>&lt;script type="text/javascript"&gt;
+    $(document).ready(function() {
+        $('.headlines, p').fontify();
+    });
+&lt;/script&gt;
+</code></pre>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<h3>More about Fontify</h3>
 
-<h3>Rather Drive Stick?</h3>
+<p>Fontify is a jQuery plugin. It was developed against jQuery 1.8.3 and tested exclusively in Chromium 22.0.1229.94 on Ubuntu 12.10, so if you want to tell me about your troubles (which is welcome), be sure to include a bunch of information like that.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h3>Thanks</h3>
 
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </article>
-      </div>
+<p>Fontify uses <a href="https://github.com/ericmmartin/simplemodal">SimpleModal</a>, which is awesome. So thanks to <a href="https://github.com/ericmmartin">Eric Martin</a> for that.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/joecwallace">joecwallace</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
-    <footer>
-      <div class="owner">
-      <p><a href="https://github.com/joecwallace" class="avatar"><img src="https://secure.gravatar.com/avatar/6573d97f256cd78f556d10d8808d9a1b?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="48" height="48"/></a> <a href="https://github.com/joecwallace">joecwallace</a> maintains <a href="https://github.com/joecwallace/fontify">Fontify</a></p>
-
-
-      </div>
-      <div class="creds">
-        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="http://twitter.com/jonrohan/">Jon Rohan</a></small>
-      </div>
-    </footer>
-  </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/joecwallace/fontify/tarball/master" class="tar">tar</a><a href="https://github.com/joecwallace/fontify/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
-
-  
-</body>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
 </html>
