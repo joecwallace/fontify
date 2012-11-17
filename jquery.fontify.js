@@ -160,8 +160,15 @@
   }
 
   function fetchFonts(callback) {
-    $.getJSON('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyD14QrqNAfCOxBAr_jbSt_j0hNMKIFHsj8', function(data) {
-      callback(data.items);
+    $.ajax({
+      url: 'https://www.googleapis.com/webfonts/v1/webfonts',
+      data: {
+        key: 'AIzaSyD14QrqNAfCOxBAr_jbSt_j0hNMKIFHsj8'
+      },
+      dataType: 'jsonp',
+      success: function(data) {
+        callback(data.items);
+      }
     });
   }
 
