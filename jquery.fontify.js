@@ -1,5 +1,5 @@
 /*!
- * jQuery fontify plugin for browsing Google Web Fonts
+ * jQuery Fontify plugin for browsing Google Web Fonts
  * Original author: @joecwallace
  * Licensed under the MIT license
  */
