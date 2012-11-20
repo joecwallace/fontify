@@ -247,16 +247,38 @@
   Fontify.prototype.loadFonts = function() {
     
     this.createFontifier();
+    this.selectFontsFromHash();
     this.setFonts();
       
   };
+  
+  Fontify.prototype.selectFontsFromHash = function() {
+    
+    var hash = window.location.hash,
+      matches,
+      i, num, match;
+    
+    if (hash) {
+      matches = hash.match(/(#|&)(?:[^=]+)=(?:[^&]+)/g);
+      num = matches.length;
+      
+      for (i = 0; i < num; i++) {
+        // Remove '#' or '&'
+        match = matches[i].slice(1).split('=');
+        
+        // Find <select /> by data and set value
+        $('select[data-selector="' + match[0].replace('+', ' ') + '"]', this.fontifier).val(match[1]);
+      }
+    }
+    
+  }
   
   Fontify.prototype.getFontSelectOptions = function() {
     
     var options = '';
     
     $.each(this.fonts, function(idx, val) {
-      options += '<option value="' + idx + '">' + val.family + '</option>';
+      options += '<option value="' + val.family.replace(' ', '+') + '">' + val.family + '</option>';
     });
     
     return options;
