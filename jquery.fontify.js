@@ -58,7 +58,7 @@
       $(selector).css('font-family', fontFam);
     });
     
-    that.link.attr('href', 'http://fonts.googleapis.com/css?family=' + fontFams.join('|'));
+    that.link.attr('href', '//fonts.googleapis.com/css?family=' + fontFams.join('|'));
     
   };
   
