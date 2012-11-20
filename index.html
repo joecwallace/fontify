@@ -58,18 +58,27 @@
 
 <pre><code>&lt;script type="text/javascript"&gt;
     $(document).ready(function() {
-        $('.headlines, p').fontify();
+        $('.headlines, p').fontify({ apiKey: 'YOUR-GOOGLE-API-KEY' });
     });
 &lt;/script&gt;
 </code></pre>
+
+<p>For more about the <code>apiKey</code> option, see <a href="#options">Options</a> below.</p>
 
 <h3>More about Fontify</h3>
 
 <p>Fontify is a jQuery plugin. It was developed against jQuery 1.8.3 and tested exclusively in Chromium 22.0.1229.94 on Ubuntu 12.10, so if you want to tell me about your troubles (which is welcome), be sure to include a bunch of information like that.</p>
 
-<h3>Thanks</h3>
+<h3 id="options">Options</h3>
 
-<p>Fontify uses <a href="https://github.com/ericmmartin/simplemodal">SimpleModal</a>, which is awesome. So thanks to <a href="https://github.com/ericmmartin">Eric Martin</a> for that.</p>
+<ul>
+  <li><code>apiKey</code> - <b>Required.</b> This is a Google API key from the <a href="https://code.google.com/apis/console/" target="_blank">Google API console</a>. The value can be found on the "API Access" tab, and "Web Fonts Developer API" must be enabled on the "Services" tab. <ul><li>Values: See <a href="https://code.google.com/apis/console/" target="_blank">Google API console</a></li></ul></li>
+  <li><code>position</code> - This docks the Fontify toolbar to either the top or bottom of the window. <ul><li>Values: <code>'top'</code>, <code>'bottom'</code></li> <li>Default: <code>'top'</code></li></ul></li>
+  <li><code>activeOpacity</code> - The opacity of the Fontify toolbar on mouse hover. <ul><li>Values: <code>0.0</code> to <code>1.0</code></li> <li>Default: <code>0.9</code></li></ul></li>
+  <li><code>inactiveOpacity</code> - The opacity of the Fontify toolbar on mouse leave. <ul><li>Values: <code>0.0</code> to <code>1.0</code></li> <li>Default: <code>0.2</code></li></ul></li>
+</ul>
+
+<p></p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/joecwallace">joecwallace</a></p>
