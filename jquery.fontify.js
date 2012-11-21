@@ -106,7 +106,7 @@
       sharePre = $('<pre></pre>');
 
     $.each(that.selects, function() {
-      hash += hash.length ? '&' : '#' +
+      hash += (hash.length ? '&' : '#') +
         $(this).data('selector').replace(' ', '+') + '=' +
         $(this).val();
     });
