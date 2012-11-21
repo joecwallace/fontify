@@ -65,10 +65,7 @@
   Fontify.prototype.showUsage = function() {
     
     var that = this,
-      body = $('body'),
-      overlay = $('<div></div>'),
       modal = $('<div></div>'),
-      closeBtn = $('<a href="#">&times;</a>'),
       headP = $('<p>In your <span style="font-style:italic;">&lt;head /&gt;</span>:</p>'),
       headPre = $('<pre></pre>'),
       stylesP = $('<p>In your styles:</p>'),
@@ -80,31 +77,7 @@
         'font-family': 'monospace',
         'margin-bottom': '24px',
         padding: '4px 8px'
-      },
-      closeFunc = function(evt) {
-        evt.preventDefault();
-        overlay.remove();
-        modal.remove();
       };
-    
-    overlay.css({
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      height: '100%',
-      width: '100%',
-      background: '#000',
-      opacity: 0.4,
-      'z-index': zIndex + 1
-    }).appendTo(body).click(closeFunc);
-    
-    closeBtn.css({
-      position: 'absolute',
-      top: 0,
-      right: '8px',
-      'font-size': '18px',
-      'font-weight': 'bold'
-    }).click(closeFunc);
     
     $.each(that.selects, function() {
       if (stylesContent.length) {
@@ -117,22 +90,32 @@
     headPre.css(preCss).text(that.link[0].outerHTML);
     stylesPre.css(preCss).html(stylesContent);
     
-    modal.append(closeBtn, headP, headPre, stylesP, stylesPre).css({
-      position: 'fixed',
-      bottom: '100%',
-      left: '50%',
-      background: '#fff',
-      border: '1px solid #000',
-      'box-shadow': '6px 6px 12px #888',
-      padding: '32px',
-      'z-index': zIndex + 2
-    }).appendTo(body).css({
-      'margin-left': (-modal.width() / 2) + 'px'
-    }).animate({
-      bottom: '50%',
-      'margin-bottom': (-modal.height() / 2) + 'px'
-    });
+    modal.append(headP, headPre, stylesP, stylesPre);
+
+    this.displayModal(modal);
     
+  };
+
+  Fontify.prototype.showShare = function() {
+
+    var that = this,
+      url = window.location.href,
+      hash = '',
+      modal = $('<div></div>'),
+      shareP = $('<p>Share these fonts with the following URL:</p>'),
+      sharePre = $('<pre></pre>');
+
+    $.each(that.selects, function() {
+      hash += hash.length ? '#' : '&' +
+        $(this).data('selector').replace(' ', '+') +
+        $(this).val();
+    });
+
+    sharePre.text(url + hash);
+    modal.append(shareP).append(sharePre);
+
+    this.displayModal(modal);
+
   };
   
   Fontify.prototype.createWidget = function() {
@@ -186,6 +169,7 @@
       fontSelect = $('<select></select>'),
       fontOptions = that.getFontSelectOptions(),
       usageLink = $('<a href="#">Use fonts</a>'),
+      shareLink = $('<a href="#">Share</a>'),
       separator = '&nbsp;//&nbsp;';
     
     fontSelect.html(fontOptions).css('margin', '0 8px 0 4px').change(function() {
@@ -204,12 +188,17 @@
     
     usageLink.click(function(evt) {
       evt.preventDefault();
-      
       that.showUsage();
+    });
+
+    shareLink.click(function(evt) {
+      evt.preventDefault();
+      that.showShare();
     });
     
     fontifier.attr('id', 'fontifier').css({ margin: that.options.margin })
-      .append(separator).append(usageLink);
+      .append(separator).append(usageLink)
+      .append(separator).append(shareLink);
     
     that.widget.html(fontifier);
     
@@ -286,6 +275,56 @@
     
     return options;
     
+  };
+
+  Fontify.prototype.displayModal = function(content) {
+    
+    var that = this,
+      body = $('body'),
+      overlay = $('<div></div>'),
+      modal = $('<div></div>'),
+      closeBtn = $('<a href="#">&times;</a>'),
+      closeFunc = function(evt) {
+        evt.preventDefault();
+        overlay.remove();
+        modal.remove();
+      };
+    
+    overlay.css({
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      height: '100%',
+      width: '100%',
+      background: '#000',
+      opacity: 0.4,
+      'z-index': zIndex + 1
+    }).appendTo(body).click(closeFunc);
+    
+    closeBtn.css({
+      position: 'absolute',
+      top: 0,
+      right: '8px',
+      'font-size': '18px',
+      'font-weight': 'bold'
+    }).click(closeFunc);
+    
+    modal.append(closeBtn, content).css({
+      position: 'fixed',
+      bottom: '100%',
+      left: '50%',
+      background: '#fff',
+      border: '1px solid #000',
+      'box-shadow': '6px 6px 12px #888',
+      padding: '32px',
+      'z-index': zIndex + 2
+    }).appendTo(body).css({
+      'margin-left': (-modal.width() / 2) + 'px'
+    }).animate({
+      bottom: '50%',
+      'margin-bottom': (-modal.height() / 2) + 'px'
+    });
+
   };
   
   Fontify.prototype.displayError = function(error) {
