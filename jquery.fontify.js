@@ -256,18 +256,21 @@
     
     var hash = window.location.hash,
       matches,
-      i, num, match;
+      i, j, match;
     
     if (hash) {
       matches = hash.match(/(#|&)(?:[^=]+)=(?:[^&]+)/g);
       num = matches.length;
       
-      for (i = 0; i < num; i++) {
+      for (i = 0; i < matches.length; i++) {
         // Remove '#' or '&'
         match = matches[i].slice(1).split('=');
-        
-        // Find <select /> by data and set value
-        $('select[data-selector="' + match[0].replace('+', ' ') + '"]', this.fontifier).val(match[1]);
+
+        for (j = 0; j < this.selects.length; j++) {
+          if (this.selects[j].data('selector') === match[0].replace('+', ' ')) {
+            this.selects[j].val(match[1]);
+          }
+        }
       }
     }
     
