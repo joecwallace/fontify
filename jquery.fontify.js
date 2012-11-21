@@ -99,7 +99,7 @@
   Fontify.prototype.showShare = function() {
 
     var that = this,
-      url = window.location.href,
+      url = window.location.origin + window.location.pathname,
       hash = '',
       modal = $('<div></div>'),
       shareP = $('<p>Share these fonts with the following URL:</p>'),
